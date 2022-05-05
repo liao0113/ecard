@@ -22,10 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 //passport middleware
-app.use(passport.initialize());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.use(serializeUser(User.serializeUser()));
-passport.use(deserializeUser(User.deserializeUser()));
+// app.use(passport.initialize());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(serializeUser(User.serializeUser()));
+// passport.use(deserializeUser(User.deserializeUser()));
 //connect MongoDB
 main().catch((err) => console.log(err));
 async function main() {
