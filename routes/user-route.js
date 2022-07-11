@@ -7,7 +7,7 @@ router
   .get(users.renderLogin)
   .post(
     passport.authenticate("local", {
-      failureRedirect: "/login",
+      failureRedirect: "/glogin",
       failureFlash: "Wrong email or password.",
     }),
     users.LoginorRegister
