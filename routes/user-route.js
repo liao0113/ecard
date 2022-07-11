@@ -1,8 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const users = require("../controllers/users");
-
-router.route("/login").get(users.renderLogin);
+const passport = require("passport");
+router
+  .route("/login")
+  .get(users.renderLogin)
+  .post(
+    passport.authenticate("local", {
+      failureRedirect: "/login",
+      failureFlash: "Wrong email or password.",
+    }),
+    users.LoginorRegister
+  );
 
 router.get("/logout", users.logout);
 

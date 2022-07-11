@@ -4,13 +4,9 @@ module.exports.renderLogin = (req, res) => {
   res.render("users/login");
 };
 
-module.exports.LoginorRegister = async (req, res) => {
-  const { email, password } = req.body;
-  const emailExist = await User.findOne({ email });
-  if (emailExist) {
-  }
-  const newUser = new User({ email, password });
-  const registeredUser = await newUser.register(email, password);
+module.exports.LoginorRegister = (req, res) => {
+  req.flash("success", "Welcome back!");
+  res.redirect("/");
 };
 
 module.exports.logout = (req, res) => {

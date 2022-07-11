@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/liao0113/ecard#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",
     "ejs-mate": "^3.0.0",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.3.2",
     "nodemon": "^2.0.16",
