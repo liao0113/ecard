@@ -19,20 +19,15 @@ passport.deserializeUser((_id, done) => {
 passport.use(
   new LocalStrategy((email, password, done) => {
     User.findOne({ email })
-      .then((email) => {
+      .then(async (email) => {
         if (!email) {
           return done(null, false);
         }
-        // if (!email) {
-        //   const user = new User({ email: this.email, password: this.password });
-        //   const newUser = await user.save();
-        //   return done(null, newUser);
-        // }
-        // await bycrypt.compare(password, email.password, function (err, result) {
-        //   if (err) done(null, false);
-        //   if (!result) done(null, false);
-        // });
-        return done(null, email);
+        await bycrypt.compare(password, email.password, function (err, result) {
+          if (err) return done(null, false);
+          if (!result) return done(null, false);
+          else return done(null, email);
+        });
       })
       .catch((err) => {
         return done(null, false);
